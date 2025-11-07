@@ -1,0 +1,9 @@
+services:
+  - type: web
+    name: "avangard-backend"
+    env: java17
+    buildCommand: "./mvnw clean package -DskipTests"
+    startCommand: "java -jar target/*.jar"
+    envVars:
+      - key: SERVER_PORT
+        value: "8080"

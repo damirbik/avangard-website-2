@@ -1,0 +1,17 @@
+C:\Users\Дамир\IdeaProjects\avangard-website\src\main\java\ru\avangard\website\AvangardWebsiteApplication.java
+C:\Users\Дамир\IdeaProjects\avangard-website\src\main\java\ru\avangard\website\entity\Category.java
+C:\Users\Дамир\IdeaProjects\avangard-website\src\main\java\ru\avangard\website\repository\ServiceShortProjection.java
+C:\Users\Дамир\IdeaProjects\avangard-website\src\main\java\ru\avangard\website\config\DataInitializer.java
+C:\Users\Дамир\IdeaProjects\avangard-website\src\main\java\ru\avangard\website\service\SubcategoryService.java
+C:\Users\Дамир\IdeaProjects\avangard-website\src\main\java\ru\avangard\website\controller\ImageUploadController.java
+C:\Users\Дамир\IdeaProjects\avangard-website\src\main\java\ru\avangard\website\service\ServiceService.java
+C:\Users\Дамир\IdeaProjects\avangard-website\src\main\java\ru\avangard\website\config\WebConfig.java
+C:\Users\Дамир\IdeaProjects\avangard-website\src\main\java\ru\avangard\website\repository\ISubcategoryRepository.java
+C:\Users\Дамир\IdeaProjects\avangard-website\src\main\java\ru\avangard\website\controller\CategoryController.java
+C:\Users\Дамир\IdeaProjects\avangard-website\src\main\java\ru\avangard\website\controller\SubcategoryController.java
+C:\Users\Дамир\IdeaProjects\avangard-website\src\main\java\ru\avangard\website\entity\Service.java
+C:\Users\Дамир\IdeaProjects\avangard-website\src\main\java\ru\avangard\website\service\CategoryService.java
+C:\Users\Дамир\IdeaProjects\avangard-website\src\main\java\ru\avangard\website\repository\ICategoryRepository.java
+C:\Users\Дамир\IdeaProjects\avangard-website\src\main\java\ru\avangard\website\repository\IServiceRepository.java
+C:\Users\Дамир\IdeaProjects\avangard-website\src\main\java\ru\avangard\website\controller\ServiceController.java
+C:\Users\Дамир\IdeaProjects\avangard-website\src\main\java\ru\avangard\website\entity\Subcategory.java

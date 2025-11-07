@@ -1,0 +1,17 @@
+ru\avangard\website\controller\ServiceController.class
+ru\avangard\website\entity\Service.class
+ru\avangard\website\repository\IServiceRepository.class
+ru\avangard\website\service\SubcategoryService.class
+ru\avangard\website\controller\SubcategoryController.class
+ru\avangard\website\AvangardWebsiteApplication.class
+ru\avangard\website\entity\Subcategory.class
+ru\avangard\website\repository\ISubcategoryRepository.class
+ru\avangard\website\service\CategoryService.class
+ru\avangard\website\controller\ImageUploadController.class
+ru\avangard\website\repository\ICategoryRepository.class
+ru\avangard\website\repository\ServiceShortProjection.class
+ru\avangard\website\service\ServiceService.class
+ru\avangard\website\config\DataInitializer.class
+ru\avangard\website\entity\Category.class
+ru\avangard\website\config\WebConfig.class
+ru\avangard\website\controller\CategoryController.class
