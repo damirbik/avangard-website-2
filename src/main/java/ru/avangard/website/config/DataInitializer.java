@@ -5,6 +5,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import ru.avangard.website.entity.Admin;
 import ru.avangard.website.entity.Category;
 import ru.avangard.website.entity.Subcategory;
@@ -20,6 +21,7 @@ import java.util.List;
 
 @Component
 //@RequiredArgsConstructor
+@CrossOrigin(origins = "https://remjest-avangard-testing-e1b1.twc1.net/")
 public class DataInitializer implements CommandLineRunner {
 
     private final ICategoryRepository categoryRepository;

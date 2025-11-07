@@ -11,12 +11,15 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.web.authentication.WebAuthenticationDetailsSource;
 import org.springframework.stereotype.Component;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.filter.OncePerRequestFilter;
 import ru.avangard.website.service.JwtService;
 
 import java.io.IOException;
 
 @Component
+@CrossOrigin(origins = "https://remjest-avangard-testing-e1b1.twc1.net/")
+
 public class JwtAuthFilter extends OncePerRequestFilter {
 
     private final JwtService jwtService;
