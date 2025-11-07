@@ -21,7 +21,8 @@ import java.util.List;
 
 @Component
 //@RequiredArgsConstructor
-@CrossOrigin(origins = "https://remjest-avangard-testing-e1b1.twc1.net/")
+//@CrossOrigin(origins = "https://remjest-avangard-testing-e1b1.twc1.net/")
+@CrossOrigin(origins = "http://localhost:3000/")
 public class DataInitializer implements CommandLineRunner {
 
     private final ICategoryRepository categoryRepository;
