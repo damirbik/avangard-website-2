@@ -60,6 +60,17 @@ public class Service {
     @Column(name = "alias")
     private String alias;
 
+    public String getVideoLink() {
+        return videoLink;
+    }
+
+    public void setVideoLink(String videoLink) {
+        this.videoLink = videoLink;
+    }
+
+    @Column(name = "video_link")
+    private String videoLink;
+
     public String getAlias() {
         return alias;
     }

@@ -19,6 +19,8 @@ public class ServiceCreateDTO {
     private String subText;
     private String alias;
 
+    private String videoLink;
+
     @JsonProperty("subcategoryId")
     @JsonFormat(shape = JsonFormat.Shape.STRING)
     private Long subcategoryId;
@@ -66,4 +68,7 @@ public class ServiceCreateDTO {
 
     public Long getSubcategoryId() { return subcategoryId; }
     public void setSubcategoryId(Long subcategoryId) { this.subcategoryId = subcategoryId; }
+
+    public String getVideoLink() { return videoLink; }
+    public void setVideoLink(String videoLink) { this.videoLink = videoLink; }
 }

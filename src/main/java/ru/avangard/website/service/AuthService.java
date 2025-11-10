@@ -28,12 +28,9 @@ public class AuthService {
     }
 
     public String login(String login, String password) {
-        System.out.println(1111111111);
-        System.out.println(login + " " + password);
         Admin admin = adminRepository.findByLogin(login)
                 .orElseThrow(() -> new RuntimeException("Неверный логин или пароль"));
 
-        System.out.println(2222222);
         if (!passwordEncoder.matches(password, admin.getPassword())) {
             throw new RuntimeException("Неверный логин или пароль");
         }

@@ -92,6 +92,7 @@ public class ServiceService {
         if (dto.getSubtitle() != null) existing.setSubtitle(dto.getSubtitle());
         if (dto.getSubText() != null) existing.setSubText(dto.getSubText());
         if (dto.getAlias() != null) existing.setAlias(dto.getAlias());
+        if (dto.getVideoLink() != null) existing.setVideoLink(dto.getVideoLink());
 
         return serviceRepository.save(existing);
     }
@@ -121,6 +122,7 @@ public class ServiceService {
         service.setSubtitle(dto.getSubtitle());
         service.setSubText(dto.getSubText());
         service.setAlias(dto.getAlias());
+        service.setVideoLink(dto.getVideoLink());
         service.setSubcategory(subcategory);
 
         return (ru.avangard.website.entity.Service) serviceRepository.save(service);

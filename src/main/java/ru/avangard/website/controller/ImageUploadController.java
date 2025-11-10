@@ -19,12 +19,39 @@ import java.util.UUID;
 public class ImageUploadController {
 
     @Value("${upload.dir:uploads}")
-    private String uploadDir = "uploads/images";
-    // по умолчанию uploads/
+    private String uploadDir = "uploads";
 
-    @CrossOrigin(origins = "https://remjest-avangard-testing-e1b1.twc1.net/")
     @PostMapping("/api/upload/image")
     public ResponseEntity<String> uploadImage(@RequestParam("file") MultipartFile file) throws IOException {
+        if (file.isEmpty()) {
+            return ResponseEntity.badRequest().body("Файл пуст");
+        }
+
+        // Проверка типа файла (опционально)
+        String contentType = file.getContentType();
+        if (contentType == null || !contentType.startsWith("image/")) {
+            return ResponseEntity.badRequest().body("Файл не является изображением");
+        }
+
+        String originalFilename = file.getOriginalFilename();
+        String extension = "";
+        if (originalFilename != null && originalFilename.contains(".")) {
+            extension = originalFilename.substring(originalFilename.lastIndexOf("."));
+        }
+        String fileName = UUID.randomUUID() + extension;
+
+        String imageDir = uploadDir + "/images";
+        Path filePath = Paths.get(imageDir).resolve(fileName);
+        Files.createDirectories(filePath.getParent());
+        Files.write(filePath, file.getBytes());
+
+        // Возвращаем URL, который можно сохранить в Service
+        String imageUrl = "/images/" + fileName;
+        return ResponseEntity.ok(imageUrl);
+    }
+
+    @PostMapping("/api/upload/video")
+    public ResponseEntity<String> uploadVideo(@RequestParam("file") MultipartFile file) throws IOException {
         if (file.isEmpty()) {
             return ResponseEntity.badRequest().body("Файл пуст");
         }
@@ -36,13 +63,13 @@ public class ImageUploadController {
         }
         String fileName = UUID.randomUUID() + extension;
 
-        uploadDir = "uploads/images";
-        Path filePath = Paths.get(uploadDir).resolve(fileName);
+        String videoDir = uploadDir + "/videos";
+        Path filePath = Paths.get(videoDir).resolve(fileName);
         Files.createDirectories(filePath.getParent());
         Files.write(filePath, file.getBytes());
 
         // Возвращаем URL, который можно сохранить в Service
-        String imageUrl = "/images/" + fileName;
-        return ResponseEntity.ok(imageUrl);
+        String videoUrl = "/videos/" + fileName;
+        return ResponseEntity.ok(videoUrl);
     }
 }

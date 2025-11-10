@@ -15,6 +15,7 @@ public class ServiceUpdateDTO {
     private String subtitle;
     private String subText;
     private String alias;
+    private String videoLink;
 
     // Геттеры и сеттеры
     public String getTitle() { return title; }
@@ -55,4 +56,7 @@ public class ServiceUpdateDTO {
 
     public String getAlias() { return alias; }
     public void setAlias(String alias) { this.alias = alias; }
+
+    public String getVideoLink() { return videoLink; }
+    public void setVideoLink(String videoLink) { this.videoLink = videoLink; }
 }
