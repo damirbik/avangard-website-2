@@ -9,7 +9,7 @@ import ru.avangard.website.service.CategoryService;
 import java.util.List;
 
 @RestController
-@CrossOrigin(origins = "https://remjest-avangard-testing-e1b1.twc1.net/")
+//@CrossOrigin(origins = "https://remjest-avangard-testing-e1b1.twc1.net/")
 @RequestMapping("/api/categories")
 //@RequiredArgsConstructor
 public class CategoryController {

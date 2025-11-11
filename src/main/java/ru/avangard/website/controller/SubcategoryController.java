@@ -13,7 +13,7 @@ import java.util.List;
 @RestController
 @RequestMapping("/api/subcategories")
 //@RequiredArgsConstructor
-@CrossOrigin(origins = "https://remjest-avangard-testing-e1b1.twc1.net/")
+//@CrossOrigin(origins = "https://remjest-avangard-testing-e1b1.twc1.net/")
 
 public class SubcategoryController {
 

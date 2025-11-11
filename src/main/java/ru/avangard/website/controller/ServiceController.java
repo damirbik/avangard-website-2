@@ -23,7 +23,7 @@ import org.springframework.beans.factory.annotation.Value;
 
 @RestController
 @RequestMapping("/api/services")
-@CrossOrigin(origins = "https://remjest-avangard-testing-e1b1.twc1.net/")
+//@CrossOrigin(origins = "https://remjest-avangard-testing-e1b1.twc1.net/")
 
 public class ServiceController {
 

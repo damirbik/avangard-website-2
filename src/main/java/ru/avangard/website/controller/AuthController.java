@@ -8,7 +8,7 @@ import ru.avangard.website.entity.Admin;
 import ru.avangard.website.service.AuthService;
 
 @RestController
-@CrossOrigin(origins = "https://remjest-avangard-testing-e1b1.twc1.net/")
+//@CrossOrigin(origins = "https://remjest-avangard-testing-e1b1.twc1.net/")
 public class AuthController {
 
     private final AuthService authService;
