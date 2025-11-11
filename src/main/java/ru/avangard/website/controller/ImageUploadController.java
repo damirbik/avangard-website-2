@@ -23,15 +23,6 @@ public class ImageUploadController {
 
     @PostMapping("/api/upload/image")
     public ResponseEntity<String> uploadImage(@RequestParam("file") MultipartFile file) throws IOException {
-        if (file.isEmpty()) {
-            return ResponseEntity.badRequest().body("Файл пуст");
-        }
-
-        // Проверка типа файла (опционально)
-        String contentType = file.getContentType();
-        if (contentType == null || !contentType.startsWith("image/")) {
-            return ResponseEntity.badRequest().body("Файл не является изображением");
-        }
 
         String originalFilename = file.getOriginalFilename();
         String extension = "";
@@ -40,8 +31,7 @@ public class ImageUploadController {
         }
         String fileName = UUID.randomUUID() + extension;
 
-        String imageDir = uploadDir + "/images";
-        Path filePath = Paths.get(imageDir).resolve(fileName);
+        Path filePath = Paths.get(uploadDir).resolve(fileName);
         Files.createDirectories(filePath.getParent());
         Files.write(filePath, file.getBytes());
 
