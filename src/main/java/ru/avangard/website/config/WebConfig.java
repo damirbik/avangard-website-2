@@ -14,12 +14,15 @@ public class WebConfig implements WebMvcConfigurer {
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
         // Обслуживание изображений из uploads/images/
         registry.addResourceHandler("/images/**")
-                .addResourceLocations("file:uploads/images/");
+                .addResourceLocations("file:uploads/images/")
+                .setCachePeriod(600) // Опционально: настройка кеширования
+                .resourceChain(true)
+                .addResolver(new PathResourceResolver());
 
         // Обслуживание видео из uploads/videos/
         registry.addResourceHandler("/videos/**") // URL паттерн для видео
                 .addResourceLocations("file:uploads/videos/") // Физическое расположение
-                //.setCachePeriod(3600) // Опционально
+                .setCachePeriod(600) // Опционально
                 .resourceChain(true)
                 .addResolver(new PathResourceResolver());
     }
