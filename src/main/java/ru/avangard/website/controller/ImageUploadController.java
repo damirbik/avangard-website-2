@@ -37,7 +37,8 @@ public class ImageUploadController {
         Files.createDirectories(filePath.getParent()); // Создаем uploads/images/
         Files.write(filePath, file.getBytes());
 
-        String imageUrl = "/images/" + fileName; // Правильный URL
+        String imageUrl = "/images/" + fileName;
+        System.out.println(imageUrl + "11111111111111111");// Правильный URL
         return ResponseEntity.ok(imageUrl);
     }
 
