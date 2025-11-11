@@ -38,7 +38,6 @@ public class ImageUploadController {
         Files.write(filePath, file.getBytes());
 
         String imageUrl = "/images/" + fileName;
-        System.out.println(imageUrl + "11111111111111111");// Правильный URL
         return ResponseEntity.ok(imageUrl);
     }
 
