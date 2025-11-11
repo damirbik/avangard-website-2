@@ -12,15 +12,17 @@ import org.springframework.web.servlet.resource.PathResourceResolver;
 public class WebConfig implements WebMvcConfigurer {
     @Override
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
+        // Обслуживание изображений из uploads/images/
         registry.addResourceHandler("/images/**")
                 .addResourceLocations("file:uploads/images/")
                 .setCachePeriod(3600) // Опционально: настройка кеширования
                 .resourceChain(true)
                 .addResolver(new PathResourceResolver());
 
-        registry.addResourceHandler("/videos/**")
-                .addResourceLocations("file:uploads/videos/")
-                .setCachePeriod(3600) // Опционально: настройка кеширования
+        // Обслуживание видео из uploads/videos/
+        registry.addResourceHandler("/videos/**") // URL паттерн для видео
+                .addResourceLocations("file:uploads/videos/") // Физическое расположение
+                .setCachePeriod(3600) // Опционально
                 .resourceChain(true)
                 .addResolver(new PathResourceResolver());
     }

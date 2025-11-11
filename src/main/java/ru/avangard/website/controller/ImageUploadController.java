@@ -31,20 +31,18 @@ public class ImageUploadController {
         }
         String fileName = UUID.randomUUID() + extension;
 
-        Path filePath = Paths.get(uploadDir).resolve(fileName);
-        Files.createDirectories(filePath.getParent());
+        // Сохраняем в uploads/images/
+        String imageDir = uploadDir + "/images";
+        Path filePath = Paths.get(imageDir).resolve(fileName);
+        Files.createDirectories(filePath.getParent()); // Создаем uploads/images/
         Files.write(filePath, file.getBytes());
 
-        // Возвращаем URL, который можно сохранить в Service
-        String imageUrl = "/images/" + fileName;
+        String imageUrl = "/images/" + fileName; // Правильный URL
         return ResponseEntity.ok(imageUrl);
     }
 
     @PostMapping("/api/upload/video")
     public ResponseEntity<String> uploadVideo(@RequestParam("file") MultipartFile file) throws IOException {
-        if (file.isEmpty()) {
-            return ResponseEntity.badRequest().body("Файл пуст");
-        }
 
         String originalFilename = file.getOriginalFilename();
         String extension = "";
@@ -53,13 +51,15 @@ public class ImageUploadController {
         }
         String fileName = UUID.randomUUID() + extension;
 
+        // Сохраняем в uploads/videos/
         String videoDir = uploadDir + "/videos";
         Path filePath = Paths.get(videoDir).resolve(fileName);
-        Files.createDirectories(filePath.getParent());
+        Files.createDirectories(filePath.getParent()); // Создаем uploads/videos/
         Files.write(filePath, file.getBytes());
 
-        // Возвращаем URL, который можно сохранить в Service
-        String videoUrl = "/videos/" + fileName;
+        // Возвращаем URL, который нужно будет обслужить
+        // Добавим ResourceHandler для /videos/**
+        String videoUrl = "/videos/" + fileName; // URL для видео
         return ResponseEntity.ok(videoUrl);
     }
 }
