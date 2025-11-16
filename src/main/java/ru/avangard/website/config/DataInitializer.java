@@ -1,11 +1,9 @@
 package ru.avangard.website.config;
 
-import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
-import org.springframework.web.bind.annotation.CrossOrigin;
 import ru.avangard.website.entity.Admin;
 import ru.avangard.website.entity.Category;
 import ru.avangard.website.entity.Subcategory;
@@ -15,14 +13,13 @@ import ru.avangard.website.repository.ICategoryRepository;
 import ru.avangard.website.repository.ISubcategoryRepository;
 import ru.avangard.website.repository.IServiceRepository;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import ru.avangard.website.service.MainPageService;
 
 import java.util.Arrays;
 import java.util.List;
 
 @Component
-//@RequiredArgsConstructor
-//@CrossOrigin(origins = "https://remjest-avangard-testing-e1b1.twc1.net/")
-@CrossOrigin(origins = "http://localhost:3000/")
+
 public class DataInitializer implements CommandLineRunner {
 
     private final ICategoryRepository categoryRepository;
@@ -30,6 +27,7 @@ public class DataInitializer implements CommandLineRunner {
     private final IServiceRepository serviceRepository;
     private final IAdminRepository adminRepository;
     private final PasswordEncoder passwordEncoder;
+
 
     public DataInitializer(
             ICategoryRepository categoryRepository,
@@ -44,6 +42,9 @@ public class DataInitializer implements CommandLineRunner {
         this.passwordEncoder = passwordEncoder;
     }
 
+    @Autowired
+    private MainPageService mainPageService;
+
     @Override
     @Transactional
     public void run(String... args) throws Exception {
@@ -56,6 +57,7 @@ public class DataInitializer implements CommandLineRunner {
             System.out.println("✅ База данных уже содержит данные. Пропускаем инициализацию.");
             return;
         }
+        mainPageService.createDefaultMainPageIfNotExists();
         Admin admin = new Admin();
         admin.setLogin("admin");
         admin.setPassword(passwordEncoder.encode("password123"));
