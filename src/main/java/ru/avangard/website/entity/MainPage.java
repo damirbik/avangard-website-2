@@ -28,6 +28,15 @@ public class MainPage {
     @Column(name = "property_valuation_price", length = 100)
     private String propertyValuationPrice;
 
+    @Column(name = "meta_title")
+    private String metaTitle = "ООО «Авангард» — Юридическая помощь в Томске";
+
+    @Column(name = "meta_description", length = 400)
+    private String metaDescription = "ООО «Авангард» - Любой вид Юридической помощи. Помогаем клиентам отстоять их интересы и получить достойную компенсацию в г. Томске и Области";
+
+    @Column(name = "meta_keywords")
+    private String metaKeywords = "";
+
     // Геттеры и сеттеры
 
     public Long getId() {
@@ -84,5 +93,29 @@ public class MainPage {
 
     public void setPropertyValuationPrice(String propertyValuationPrice) {
         this.propertyValuationPrice = propertyValuationPrice;
+    }
+
+    public String getMetaKeywords() {
+        return metaKeywords;
+    }
+
+    public void setMetaKeywords(String metaKeywords) {
+        this.metaKeywords = metaKeywords;
+    }
+
+    public String getMetaDescription() {
+        return metaDescription;
+    }
+
+    public void setMetaDescription(String metaDescription) {
+        this.metaDescription = metaDescription;
+    }
+
+    public String getMetaTitle() {
+        return metaTitle;
+    }
+
+    public void setMetaTitle(String metaTitle) {
+        this.metaTitle = metaTitle;
     }
 }

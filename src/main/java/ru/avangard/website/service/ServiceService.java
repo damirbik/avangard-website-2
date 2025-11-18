@@ -124,6 +124,7 @@ public class ServiceService {
         service.setAlias(dto.getAlias());
         service.setVideoLink(dto.getVideoLink());
         service.setSubcategory(subcategory);
+        service.setCategoryId(dto.getCategoryId());
 
         return (ru.avangard.website.entity.Service) serviceRepository.save(service);
     }

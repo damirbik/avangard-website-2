@@ -18,7 +18,7 @@ public class ServiceCreateDTO {
     private String subtitle;
     private String subText;
     private String alias;
-
+    private int categoryId;
     private String videoLink;
 
     @JsonProperty("subcategoryId")
@@ -71,4 +71,13 @@ public class ServiceCreateDTO {
 
     public String getVideoLink() { return videoLink; }
     public void setVideoLink(String videoLink) { this.videoLink = videoLink; }
+
+    public int getCategoryId() {
+        return categoryId;
+    }
+
+    public void setCategoryId(int categoryId) {
+        this.categoryId = categoryId;
+    }
+
 }

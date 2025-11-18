@@ -155,6 +155,7 @@ public class DataInitializer implements CommandLineRunner {
         independentDamageAssessmentAfterCarAccident.setExtraText("Специалисты компании ООО «Авангард» в Томске  не только помогут понять, хватит ли выплаченных страховой компанией средств на восстановление авто, но и защитят ваши интересы в суде!");
         independentDamageAssessmentAfterCarAccident.setSubtitle("Кому необходима независимая оценка автомобиля после ДТП?");
         independentDamageAssessmentAfterCarAccident.setAlias("idaaca");
+        independentDamageAssessmentAfterCarAccident.setCategoryId(1);
 
         Service vehicleRepairQualityExamination = new Service();
         vehicleRepairQualityExamination.setTitle("Экспертиза качества ремонта автомобиля");

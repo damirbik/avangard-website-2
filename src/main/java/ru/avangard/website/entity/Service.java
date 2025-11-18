@@ -60,6 +60,20 @@ public class Service {
     @Column(name = "alias")
     private String alias;
 
+    @Column(name = "video_link")
+    private String videoLink;
+
+    @Column(name = "category_id")
+    private int categoryId;
+
+    public int getCategoryId() {
+        return categoryId;
+    }
+
+    public void setCategoryId(int categoryId) {
+        this.categoryId = categoryId;
+    }
+
     public String getVideoLink() {
         return videoLink;
     }
@@ -67,9 +81,6 @@ public class Service {
     public void setVideoLink(String videoLink) {
         this.videoLink = videoLink;
     }
-
-    @Column(name = "video_link")
-    private String videoLink;
 
     public String getAlias() {
         return alias;

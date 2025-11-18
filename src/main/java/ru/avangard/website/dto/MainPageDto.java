@@ -8,18 +8,49 @@ public class MainPageDto {
     private PropertyValuation propertyValuation;
     private List<WorkPrinciple> workPrinciples;
     private List<Advantage> advantages;
+    private String metaTitle;
+    private String metaDescription;
+    private String metaKeywords;
 
     // Конструкторы
     public MainPageDto() {}
 
-    public MainPageDto(About about, PropertyValuation propertyValuation, List<WorkPrinciple> workPrinciples, List<Advantage> advantages) {
+    public MainPageDto(About about, PropertyValuation propertyValuation, List<WorkPrinciple> workPrinciples, List<Advantage> advantages, String metaDescription, String metaTitle, String metaKeywords) {
         this.about = about;
         this.propertyValuation = propertyValuation;
         this.workPrinciples = workPrinciples;
         this.advantages = advantages;
+        this.metaDescription = metaDescription;
+        this.metaKeywords = metaKeywords;
+        this.metaTitle = metaTitle;
     }
 
     // Геттеры и сеттеры
+
+    public String getMetaTitle() {
+        return metaTitle;
+    }
+
+    public void setMetaTitle(String metaTitle) {
+        this.metaTitle = metaTitle;
+    }
+
+    public String getMetaDescription() {
+        return metaDescription;
+    }
+
+    public void setMetaDescription(String metaDescription) {
+        this.metaDescription = metaDescription;
+    }
+
+    public String getMetaKeywords() {
+        return metaKeywords;
+    }
+
+    public void setMetaKeywords(String metaKeywords) {
+        this.metaKeywords = metaKeywords;
+    }
+
 
     public About getAbout() {
         return about;
