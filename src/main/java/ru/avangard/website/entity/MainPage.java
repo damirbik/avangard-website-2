@@ -10,7 +10,7 @@ public class MainPage {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id = 1L; // Используем фиксированный ID для единственной записи
 
-    @Column(name = "about_company_info", columnDefinition = "TEXT")
+    @Column(name = "about_company_info", length = 3000)
     private String aboutCompanyInfo;
 
     @Column(name = "about_company_important", length = 1000)
@@ -19,7 +19,7 @@ public class MainPage {
     @Column(name = "about_company_video_url", length = 500)
     private String aboutCompanyVideoUrl;
 
-    @Column(name = "property_valuation_info", columnDefinition = "TEXT")
+    @Column(name = "property_valuation_info", length = 3000)
     private String propertyValuationInfo;
 
     @Column(name = "property_valuation_image_url", length = 500)
