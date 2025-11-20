@@ -114,26 +114,68 @@ public class MainPageService {
         if (!mainPageRepository.existsById(1L)) {
             // 1. Создаём и сохраняем MainPage (он получит id = 1)
             MainPage defaultPage = new MainPage();
-            defaultPage.setAboutCompanyInfo("Информация о компании строка 1\nИнформация о компании строка 2\nИнформация о компании строка 3\nИнформация о компании строка 4");
-            defaultPage.setAboutCompanyImportant("Важная информация");
-            defaultPage.setAboutCompanyVideoUrl("/videos/default.mp4");
-            defaultPage.setPropertyValuationInfo("Информация об оценке недвижимости");
-            defaultPage.setPropertyValuationImageUrl("/images/valuation.jpg");
+            defaultPage.setAboutCompanyInfo("/bold/ООО «АВАНГАРД»//bold// — экспертно-оценочная компания, предлагающая широкий спектр услуг по проведению независимой оценки и экспертизе в Томской области, в Томске, в Северске, а также в других регионах.\"\n" +
+                    "\n" +
+                    "\"Отчетные документы, выдаваемые компанией, принимаются /bold/во всех организациях и учреждениях Российской Федерации.//bold//\"\n" +
+                    "\n" +
+                    "\"Мы специализируемся главным образом на проведении экспертиз и оценки /bold/любого вида имущества://bold// движимого и недвижимого. Благодаря /bold/высокому уровню профессиональной подготовки и большому опыту//bold//, мы оказываем услуги качественно и в срок.\"\n" +
+                    "\n" +
+                    "\"/bold/Наша компания включена в реестр НОПРИЗ и является членом СРО.//bold// Регистрационный номер члена СРО № П-116-007024040541-0197 в области инженерных изысканий и в области архитектурно-строительного проектирования и их обязательствах Союз «Межрегиональное объединение организаций в области проектирования «Ярд» (СРО-П-116-18012010).");
+            defaultPage.setAboutCompanyImportant("/bold/МЫ НЕ ТЯНЕМ ВРЕМЯ — ВЫ НЕ ТЕРЯЕТЕ ДЕНЬГИ!//bold// /n/ /italic/Все заключения и отчёты мы подготавливаем в минимальные сроки//italic//");
+            defaultPage.setAboutCompanyVideoUrl("/videos/main-video.mp4");
+            defaultPage.setPropertyValuationInfo("/bold/Независимая оценка стоимости недвижимости//bold// (квартиры, дома, земельного участка или участка под строительство) необходима, в случае, если клиенты желают её приобрести, продать или застраховать, при использовании в качестве арендной жилой или нежилой недвижимости, при совершении сделок купли-продажи недвижимых активов и объектов основных средств. Оценка коммерческой или жилой недвижимости /bold/в Томске и Томской области//bold// да и в любом городе часто требуется в случае, если появляется потребность в привлечении акционеров, а также в случае разделения долей собственно./n//n/\n" +
+                    "ㅤКомпания OOO «АВАНГАРД» оказывает /bold/полный перечень услуг//bold// по оценке любой недвижимости в Томске:/n//n/\n" +
+                    "ㅤ• Оценка недвижимости/n/\n" +
+                    "ㅤ• Оценка жилой недвижимости/n/\n" +
+                    "ㅤ• Оценка коттеджа/n/\n" +
+                    "ㅤ• Оценка квартиры/n/\n" +
+                    "ㅤ• Оценка дачи/n/\n" +
+                    "ㅤ• Оценка офисных помещений/n/\n" +
+                    "ㅤ• Оценка складов/n/\n" +
+                    "ㅤ• Оценка гаражей/n/\n" +
+                    "ㅤ• Оценка незавершенного строительства/n/\n" +
+                    "\n" +
+                    "цена: от 3000 ₽\n");
+            defaultPage.setPropertyValuationImageUrl("/images/home.jpg");
             defaultPage.setPropertyValuationPrice("от 5000 руб.");
 
             // Сначала сохраняем MainPage, чтобы получить ID
             MainPage savedMainPage = mainPageRepository.save(defaultPage);
 
             // 2. Теперь создаём WorkPrinciple и Advantage, устанавливая им связь с сохранённым MainPage
-            for (int i = 1; i <= 4; i++) {
-                WorkPrinciple wp = new WorkPrinciple("Текст принципа " + i, "/images/principle_" + i + ".png");
-                wp.setMainPage(savedMainPage); // Устанавливаем связь
-                workPrincipleRepository.save(wp); // Теперь можно сохранить
+            // Создаём 4 разных принципа работы с уникальными текстами
+            WorkPrinciple wp1 = new WorkPrinciple("Независимость и беспристрастность", "1.svg");
+            wp1.setMainPage(savedMainPage);
+            workPrincipleRepository.save(wp1);
 
-                Advantage adv = new Advantage("Заголовок " + i, "Описание " + i);
-                adv.setMainPage(savedMainPage); // Устанавливаем связь
-                advantageRepository.save(adv); // Теперь можно сохранить
-            }
+            WorkPrinciple wp2 = new WorkPrinciple("Строгое соответствие законодательству", "2.svg");
+            wp2.setMainPage(savedMainPage);
+            workPrincipleRepository.save(wp2);
+
+            WorkPrinciple wp3 = new WorkPrinciple("Высокая квалификация и сертификация экспертов и оценщиков", "3.svg");
+            wp3.setMainPage(savedMainPage);
+            workPrincipleRepository.save(wp3);
+
+            WorkPrinciple wp4 = new WorkPrinciple("Конфиденциальность", "4.svg");
+            wp4.setMainPage(savedMainPage);
+            workPrincipleRepository.save(wp4);
+
+// И аналогично для преимуществ
+            Advantage adv1 = new Advantage("Качество и оперативность выполнения услуг", "Профессионализм и опыт экспертов и оценщиков, что гарантирует высокое качество услуг и точность результатов.");
+            adv1.setMainPage(savedMainPage);
+            advantageRepository.save(adv1);
+
+            Advantage adv2 = new Advantage("Объективность и независимость", "Независимые эксперты и оценщики действуют в рамках законодательства и предоставляют непредвзятые заключения и отчеты, что особенно важно при решении спорных вопросов.");
+            adv2.setMainPage(savedMainPage);
+            advantageRepository.save(adv2);
+
+            Advantage adv3 = new Advantage("Юридическая значимость", "Заключения и отчеты имеет юридическую силу и рассматриваются любыми инстанциями.");
+            adv3.setMainPage(savedMainPage);
+            advantageRepository.save(adv3);
+
+            Advantage adv4 = new Advantage("Страхование ответственности", "/bold/25 000 000 руб.//bold// — уровень ответственности члена саморегулируемой организации по обязательствам по договору подряда на подготовку проектной документации, в соответствии с которым указанным членом внесен взнос в компенсационный фонд возмещения вреда./n//n//bold/30 000 000 руб.//bold// — страхование ответственности оценочной организации.");
+            adv4.setMainPage(savedMainPage);
+            advantageRepository.save(adv4);
         }
     }
 }
