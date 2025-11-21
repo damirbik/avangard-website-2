@@ -130,11 +130,9 @@ public class MainPageService {
                     "ㅤ• Оценка офисных помещений/n/\n" +
                     "ㅤ• Оценка складов/n/\n" +
                     "ㅤ• Оценка гаражей/n/\n" +
-                    "ㅤ• Оценка незавершенного строительства/n/\n" +
-                    "\n" +
-                    "цена: от 3000 ₽\n");
+                    "ㅤ• Оценка незавершенного строительства/n/\n");
             defaultPage.setPropertyValuationImageUrl("/images/home.jpg");
-            defaultPage.setPropertyValuationPrice("от 5000 руб.");
+            defaultPage.setPropertyValuationPrice("от 3000 руб.");
 
             // Сначала сохраняем MainPage, чтобы получить ID
             MainPage savedMainPage = mainPageRepository.save(defaultPage);
