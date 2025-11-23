@@ -154,7 +154,7 @@ public class DataInitializer implements CommandLineRunner {
         independentDamageAssessmentAfterCarAccident.setMetaKeywords("независимая оценка ущерба после ДТП, экспертиза автомобиля Томск, оспаривание выплаты по ОСАГО, оценка ущерба для суда, ООО Авангард, страховая компания занизила выплату, автоэксперт Томск");
         independentDamageAssessmentAfterCarAccident.setExtraText("Специалисты компании ООО «Авангард» в Томске  не только помогут понять, хватит ли выплаченных страховой компанией средств на восстановление авто, но и защитят ваши интересы в суде!");
         independentDamageAssessmentAfterCarAccident.setSubtitle("Кому необходима независимая оценка автомобиля после ДТП?");
-        independentDamageAssessmentAfterCarAccident.setAlias("idaaca");
+        independentDamageAssessmentAfterCarAccident.setAlias("popular1");
         independentDamageAssessmentAfterCarAccident.setCategoryId(1);
 
         Service vehicleRepairQualityExamination = new Service();
@@ -168,7 +168,7 @@ public class DataInitializer implements CommandLineRunner {
         vehicleRepairQualityExamination.setMetaDescription("Некачественно отремонтировали авто по ОСАГО в Томске? Проведем независимую экспертизу качества ремонта. Официальный отчет для претензий к страховой и в суд. Стоимость от 5000 руб.");
         vehicleRepairQualityExamination.setMetaKeywords("экспертиза качества ремонта автомобиля, некачественный ремонт по ОСАГО Томск, проверка авто после ремонта, экспертиза кузовного ремонта, оценка лакокрасочного покрытия, оспорить ремонт по страховке, независимая экспертиза авто Томск, ООО Авангард");
         vehicleRepairQualityExamination.setExtraText("Наши специалисты могут провести качественную экспертизу автомобиля после покупки (как нового, так и б/у). Также, нами проводится независимая экспертиза после ремонта автомобиля в Томске, которая может включать экспертизу лакокрасочного покрытия автомобиля, кузовного ремонта и качество ремонта узлов и агрегатов");
-        vehicleRepairQualityExamination.setAlias("vrqe");
+        vehicleRepairQualityExamination.setAlias("popular2");
         vehicleRepairQualityExamination.setCategoryId(1);
 
         Service professionalVehicleAppraisal = new Service();
@@ -183,7 +183,7 @@ public class DataInitializer implements CommandLineRunner {
         professionalVehicleAppraisal.setMetaDescription("Профессиональная оценка автомобиля в Томске для суда, продажи или кредита. Точно определяем рыночную стоимость, готовим официальный отчет. Гарантия достоверности. Стоимость от 3000 руб.");
         professionalVehicleAppraisal.setMetaKeywords("оценка автомобиля Томск, профессиональная оценка авто, рыночная стоимость автомобиля, оценка авто для суда, отчет об оценке автомобиля, независимая оценка, ООО Авангард");
         professionalVehicleAppraisal.setExtraText("Независимая оценочная компания «АВАНГАРД» (город Томск) составит профессиональный отчет об оценке автомобиля для определения его рыночной цены перед продажей, а также для предоставления документальных данных о стоимости транспорта в судебные инстанции и коммерческие организации.");
-        professionalVehicleAppraisal.setAlias("pva");
+        professionalVehicleAppraisal.setAlias("popular3");
         professionalVehicleAppraisal.setSubtitle("Для каких целей необходима данная экспертиза:");
         professionalVehicleAppraisal.setCategoryId(1);
 
@@ -200,7 +200,7 @@ public class DataInitializer implements CommandLineRunner {
         apartmentAndHousingAppraisal.setMetaKeywords("оценка квартиры Томск, оценка стоимости недвижимости, оценка жилья для суда, отчет об оценке квартиры, рыночная стоимость квартиры, оценка недвижимости для банка, независимая оценка");
         apartmentAndHousingAppraisal.setExtraText("Наша компания имеет очень большой опыт работы и весомую практику расчета стоимости жилых и коммерческих объектов самого разного типа. Мы точно определяем текущую стоимость, благодаря чему вы не потеряете время и деньги. Наше кредо — профессиональный подход и оказание услуг высокого уровня.");
         apartmentAndHousingAppraisal.setSubtitle("Когда требуется оценка стоимости квартиры или ее доли?");
-        apartmentAndHousingAppraisal.setAlias("aaha");
+        apartmentAndHousingAppraisal.setAlias("popular4");
         apartmentAndHousingAppraisal.setCategoryId(1);
 
         Service realEstateMarketValueAppraisal = new Service();
@@ -215,7 +215,7 @@ public class DataInitializer implements CommandLineRunner {
         realEstateMarketValueAppraisal.setMetaKeywords("оценка рыночной стоимости недвижимости Томск, оценка стоимости квартиры, оценка коммерческой недвижимости, оценка дома, оценка земельного участка, отчет о стоимости недвижимости");
         realEstateMarketValueAppraisal.setExtraText("В широком смысле, под недвижимостью подразумеваются любые земельные участки, объекты, расположенные на них, сооружения, помещения, строения, здания, гаражи, складские помещения. Они могут быть как жилыми, так и нежилыми, коммерческими и промышленными.");
         realEstateMarketValueAppraisal.setSubtitle("Данная экспертиза нужна в следующих случаях:");
-        realEstateMarketValueAppraisal.setAlias("remva");
+        realEstateMarketValueAppraisal.setAlias("popular5");
         realEstateMarketValueAppraisal.setCategoryId(1);
 
         Service apartmentFloodDamageAssessment = new Service();
