@@ -14,7 +14,9 @@ public class WebConfig implements WebMvcConfigurer {
         registry.addMapping("/**") // Применяется ко всем эндпоинтам
                 .allowedOrigins(
                         "https://remjest-avangard-testing-e1b1.twc1.net", // Основной адрес
-                        "http://localhost:3000" // Локальный адрес фронтенда
+                        "http://localhost:3000",
+                        "https://avangard-70.ru",
+                        "https://www.avangard-70.ru"
                 )
                 .allowedMethods("GET", "POST", "PUT", "DELETE", "OPTIONS")
                 .allowCredentials(true);
