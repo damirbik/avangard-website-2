@@ -49,10 +49,9 @@ public class DataInitializer implements CommandLineRunner {
     @Transactional
     public void run(String... args) throws Exception {
         // Проверяем, есть ли уже данные в базе
-        serviceRepository.deleteAll(); //очистка бд
-        subcategoryRepository.deleteAll();
-        categoryRepository.deleteAll();
-        System.out.println("Старые данные удалены");
+//        serviceRepository.deleteAll(); //очистка бд
+//        subcategoryRepository.deleteAll();
+//        categoryRepository.deleteAll();
         if (categoryRepository.count() > 0) {
             System.out.println("✅ База данных уже содержит данные. Пропускаем инициализацию.");
             return;
