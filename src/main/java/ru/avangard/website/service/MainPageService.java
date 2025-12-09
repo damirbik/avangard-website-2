@@ -1,6 +1,7 @@
 package ru.avangard.website.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import ru.avangard.website.dto.MainPageDto;
@@ -11,7 +12,13 @@ import ru.avangard.website.repository.IMainPageRepository;
 import ru.avangard.website.repository.IWorkPrincipleRepository;
 import ru.avangard.website.repository.IAdvantageRepository;
 
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.List;
+import java.util.Optional;
+import java.util.stream.Collectors;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
@@ -21,6 +28,9 @@ public class MainPageService {
     private final IMainPageRepository mainPageRepository;
     private final IWorkPrincipleRepository workPrincipleRepository;
     private final IAdvantageRepository advantageRepository;
+
+    @Value("${upload.dir:uploads}")
+    private String uploadDir;
 
     @Autowired
     public MainPageService(IMainPageRepository mainPageRepository, IWorkPrincipleRepository workPrincipleRepository, IAdvantageRepository advantageRepository) {
@@ -66,10 +76,27 @@ public class MainPageService {
         }
     }
 
+    private void deleteFileIfPresent(String relativePath) {
+        if (relativePath == null || relativePath.isBlank()) return;
+        try {
+            String cleanPath = relativePath.startsWith("/") ? relativePath.substring(1) : relativePath;
+            Path filePath = Paths.get(uploadDir, cleanPath).toAbsolutePath().normalize();
+            if (filePath.startsWith(Paths.get(uploadDir).toAbsolutePath()) && Files.exists(filePath)) {
+                Files.delete(filePath);
+                System.out.println("Файл удалён: " + filePath);
+            }
+        } catch (IOException e) {
+            System.err.println("Ошибка удаления файла: " + relativePath);
+        }
+    }
+
+
     @Transactional
     public MainPageDto updateMainPage(Long mainPageId, MainPageDto dto) {
         MainPage existingPage = mainPageRepository.findById(mainPageId)
                 .orElseThrow(() -> new RuntimeException("MainPage not found with id: " + mainPageId));
+        String oldVideoUrl = existingPage.getAboutCompanyVideoUrl();
+        String oldImageUrl = existingPage.getPropertyValuationImageUrl();
 
         // Обновляем основные поля
         existingPage.setAboutCompanyInfo(String.join("\n", dto.getAbout().getInfo()));
@@ -78,6 +105,13 @@ public class MainPageService {
         existingPage.setPropertyValuationInfo(dto.getPropertyValuation().getInfo());
         existingPage.setPropertyValuationImageUrl(dto.getPropertyValuation().getImageURL());
         existingPage.setPropertyValuationPrice(dto.getPropertyValuation().getPrice());
+
+        if (!java.util.Objects.equals(oldVideoUrl, dto.getAbout().getVideoURL())) {
+            deleteFileIfPresent(oldVideoUrl);
+        }
+        if (!java.util.Objects.equals(oldImageUrl, dto.getPropertyValuation().getImageURL())) {
+            deleteFileIfPresent(oldImageUrl);
+        }
 
         MainPage savedPage = mainPageRepository.save(existingPage);
 

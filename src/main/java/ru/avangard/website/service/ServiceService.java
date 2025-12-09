@@ -1,6 +1,8 @@
 package ru.avangard.website.service;
 
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import ru.avangard.website.dto.ServiceCreateDTO;
 import ru.avangard.website.dto.ServiceUpdateDTO;
 import ru.avangard.website.entity.Subcategory;
@@ -8,7 +10,12 @@ import ru.avangard.website.repository.IServiceRepository;
 import ru.avangard.website.repository.ISubcategoryRepository;
 import ru.avangard.website.repository.ServiceShortProjection;
 
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.List;
+import java.util.Objects;
 import java.util.Optional;
 
 @Service
@@ -16,6 +23,9 @@ public class ServiceService {
 
     public final IServiceRepository serviceRepository;
     private final ISubcategoryRepository subcategoryRepository;
+
+    @Value("${upload.dir:uploads}")
+    private String uploadDir;
 
     public ServiceService(IServiceRepository serviceRepository, ISubcategoryRepository subcategoryRepository) {
         this.serviceRepository = serviceRepository;
@@ -67,7 +77,39 @@ public class ServiceService {
         return serviceRepository.findShortByCategoryId(id);
     }
 
+    private void deleteFileIfPresent(String relativePath) {
+        if (relativePath == null || relativePath.isBlank()) {
+            return;
+        }
+        try {
+            // Убираем начальный слэш, если он есть (например, "/images/photo.jpg" -> "images/photo.jpg")
+            String cleanPath = relativePath.startsWith("/") ? relativePath.substring(1) : relativePath;
+            Path filePath = Paths.get(uploadDir, cleanPath).toAbsolutePath().normalize();
+
+            // Дополнительная проверка безопасности: убедимся, что путь внутри uploadDir
+            if (filePath.startsWith(Paths.get(uploadDir).toAbsolutePath())) {
+                if (Files.exists(filePath)) {
+                    Files.delete(filePath);
+                    System.out.println("Файл успешно удалён: " + filePath);
+                }
+            }
+        } catch (IOException e) {
+            // Лучше залогировать ошибку, чем прерывать удаление из БД
+            System.err.println("Ошибка при удалении файла: " + relativePath + " - " + e.getMessage());
+        }
+    }
+
+    @Transactional
     public void deleteService(Long id) {
+        ru.avangard.website.entity.Service service = serviceRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("Услуга не найдена"));
+
+        // Удаляем все файлы, связанные с этой услугой
+        deleteFileIfPresent(service.getPicLinkPreview());
+        deleteFileIfPresent(service.getPicLinkMain());
+        deleteFileIfPresent(service.getVideoLink());
+
+        // Удаляем запись из базы данных
         serviceRepository.deleteById(id);
     }
 
@@ -78,6 +120,10 @@ public class ServiceService {
     public ru.avangard.website.entity.Service partialUpdate(Long id, ServiceUpdateDTO dto) {
         ru.avangard.website.entity.Service existing = serviceRepository.findById(id)
                 .orElseThrow(() -> new RuntimeException("Услуга не найдена"));
+
+        String oldPreview = existing.getPicLinkPreview();
+        String oldMain = existing.getPicLinkMain();
+        String oldVideo = existing.getVideoLink();
 
         if (dto.getTitle() != null) existing.setTitle(dto.getTitle());
         if (dto.getMainText() != null) existing.setMainText(dto.getMainText());
@@ -94,6 +140,15 @@ public class ServiceService {
         if (dto.getAlias() != null) existing.setAlias(dto.getAlias());
         if (dto.getVideoLink() != null) existing.setVideoLink(dto.getVideoLink());
 
+        if (dto.getPicLinkPreview() != null && !Objects.equals(oldPreview, dto.getPicLinkPreview())) {
+            deleteFileIfPresent(oldPreview);
+        }
+        if (dto.getPicLinkMain() != null && !Objects.equals(oldMain, dto.getPicLinkMain())) {
+            deleteFileIfPresent(oldMain);
+        }
+        if (dto.getVideoLink() != null && !Objects.equals(oldVideo, dto.getVideoLink())) {
+            deleteFileIfPresent(oldVideo);
+        }
         return serviceRepository.save(existing);
     }
 

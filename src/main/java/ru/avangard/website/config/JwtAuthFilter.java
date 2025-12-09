@@ -18,7 +18,7 @@ import ru.avangard.website.service.JwtService;
 import java.io.IOException;
 
 @Component
-@CrossOrigin(origins = "https://remjest-avangard-testing-e1b1.twc1.net/")
+//@CrossOrigin(origins = "https://remjest-avangard-testing-e1b1.twc1.net/")
 
 public class JwtAuthFilter extends OncePerRequestFilter {
 
