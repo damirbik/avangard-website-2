@@ -54,7 +54,7 @@ public class DataInitializer implements CommandLineRunner {
         //categoryRepository.deleteAll();
         System.out.println("Старые данные удалены");
         if (categoryRepository.count() > 0) {
-            System.out.println("✅ База данных уже содержит данные. Пропускаем инициализацию.");
+            System.out.println("База данных уже содержит данные. Пропускаем инициализацию.");
             return;
         }
         mainPageService.createDefaultMainPageIfNotExists();
